@@ -27,15 +27,15 @@
 
 ## 下一階段：前後端串接
 
-- [ ] 將 `frontend/src/api/documents.ts` 改為呼叫 `POST /api/documents`。
-- [ ] 上傳成功後保存後端回傳的 `document_id` 與 `filename`。
-- [ ] 將 `frontend/src/api/extractStream.ts` 改為讀取 SSE endpoint。
-- [ ] 支援 `stage` event，更新解析階段與進度。
-- [ ] 支援 `field` event，一筆一筆累積解析欄位。
-- [ ] 支援 `done` event，完成後進入審核畫面。
-- [ ] 支援 `error` event，停止 loading 並顯示可恢復錯誤狀態。
-- [ ] 取消解析時使用 `AbortController` 停止前端等待。
-- [ ] 取消後忽略晚到的 `field` 或 `done` event。
+- [x] 將 `frontend/src/api/documents.ts` 改為呼叫 `POST /api/documents`。
+- [x] 上傳成功後保存後端回傳的 `document_id` 與 `filename`。
+- [x] 將 `frontend/src/api/extractStream.ts` 改為讀取 SSE endpoint。
+- [x] 支援 `stage` event，更新解析階段與進度。
+- [x] 支援 `field` event，一筆一筆累積解析欄位。
+- [x] 支援 `done` event，完成後進入審核畫面。
+- [x] 支援 `error` event，停止 loading 並顯示可恢復錯誤狀態。
+- [x] 取消解析時使用 `AbortController` 停止前端等待。
+- [x] 取消後忽略晚到的 `field` 或 `done` event。
 
 ## 審核流程補齊
 
@@ -43,18 +43,20 @@
 - [~] 必填缺漏會阻擋送出。
 - [~] 低信心欄位顯示「建議檢查」。
 - [~] 多候選欄位可選候選值或改為自訂輸入。
-- [ ] 審核頁改吃真實 SSE 回傳欄位，而不是固定 mock data。
-- [ ] 確認同一群組內保留後端回傳的相對順序。
+- [x] 審核頁改吃真實 SSE 回傳欄位，而不是固定 mock data。
+- [x] 確認同一群組內保留後端回傳的相對順序。
 - [ ] 確認大量欄位時仍能透過群組掃描與操作。
 
 ## 測試與驗證
 
 - [x] 測試必填欄位缺漏規則。
+- [x] 測試上傳 API adapter 的輸入與輸出轉換。
+- [x] 測試 SSE event 解析與 split chunk 處理。
 - [ ] 視時間補測欄位分組順序。
 - [ ] 視時間補測解析失敗不會永久 loading。
-- [ ] 手動驗證 `docker compose up` 後前後端可開啟。
-- [ ] 手動驗證預設解析流程可從上傳走到審核。
-- [ ] 使用 `fail_at=3` 驗證解析失敗狀態。
+- [x] 手動驗證 `docker compose up` 後前後端可開啟。
+- [x] 手動驗證預設解析流程可從上傳走到審核。
+- [x] 使用 `fail_at=3` 驗證解析失敗狀態。
 - [ ] 使用 `field_count=120` 或 `field_count=300` 驗證大量欄位。
 - [ ] 使用取消按鈕驗證解析中止後不會誤進審核頁。
 
