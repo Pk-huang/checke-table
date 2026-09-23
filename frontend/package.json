@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@radix-ui/react-select": "^2.3.7",
+    "class-variance-authority": "^0.7.1",
     "eventsource-parser": "^4.1.1",
     "lucide-react": "^1.47.0",
     "react": "^19.2.8",

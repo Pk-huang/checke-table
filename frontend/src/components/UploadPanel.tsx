@@ -1,7 +1,7 @@
-import { Check, CloudUpload, FileText, Upload } from 'lucide-react'
+import { CloudUpload, FileText, RefreshCw, Upload } from 'lucide-react'
 import { Button } from './ui/button'
 import { Alert } from './ui/alert'
-import type { ChangeEvent } from 'react'
+import { useRef, type ChangeEvent } from 'react'
 
 type UploadPanelProps = {
   selectedFile: File | null
@@ -12,23 +12,23 @@ type UploadPanelProps = {
 }
 
 export function UploadPanel({ selectedFile, error, onFileChange, onClearFile, onStart }: UploadPanelProps) {
+  const fileInputRef = useRef<HTMLInputElement>(null)
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => onFileChange(event.target.files?.[0])
   const formatSize = (bytes: number) => `${(bytes / 1024 / 1024).toFixed(2)} MB`
 
-  return <div className="screen upload-screen">
-    <div className="screen-heading"><div><span className="eyebrow">STEP 01 / START</span><h2>上傳待審核文件</h2></div><span className="mock-label">UI PREVIEW</span></div>
-    <div className="upload-layout">
-      <label className={`dropzone ${selectedFile ? 'has-file' : ''}`}>
-        <input type="file" accept=".pdf,.png,.jpg,.jpeg" onChange={handleFileChange} />
-        <span className="upload-icon"><CloudUpload size={28} /></span>
-        <strong>{selectedFile ? '文件已準備好' : '將文件拖放至此處'}</strong>
-        <span>{selectedFile ? '可重新選擇其他文件' : '或點擊此處從裝置選擇'}</span>
-        <span className="file-hint">支援 PDF、PNG、JPG，單檔最大 10 MB</span>
-      </label>
-      <div className="upload-side-note"><span className="eyebrow">WHAT HAPPENS NEXT</span><h3>讓資料先被看見，再被確認。</h3><p>系統會將文件內容整理成可編輯的欄位，方便你快速檢查低信心與缺漏資料。</p><div className="mini-stat"><FileText size={18} /><span>單次處理一份文件</span></div><div className="mini-stat"><Check size={18} /><span>保留欄位來源頁碼</span></div></div>
-    </div>
-    {selectedFile && <div className="selected-file"><div className="file-symbol"><FileText size={19} /></div><div><strong>{selectedFile.name}</strong><span>{formatSize(selectedFile.size)} · 已選擇</span></div><Button type="button" variant="text" className="text-button" onClick={onClearFile}>重新選擇</Button></div>}
-    {error && <Alert className="validation-warning">{error}</Alert>}
-    <div className="action-row upload-actions"><span className="muted-note">上傳後會連線至後端解析服務</span><Button type="button" disabled={!selectedFile} onClick={onStart}><Upload size={17} />開始解析</Button></div>
+  return <div className="mx-auto max-w-[880px]">
+    <div className="mb-[42px] flex items-start justify-between"><div><span className="text-[15px] font-extrabold tracking-[1px] text-[#888] dark:text-[#999]">STEP 01 / START</span></div></div>
+    <input ref={fileInputRef} type="file" accept=".pdf,.png,.jpg,.jpeg" onChange={handleFileChange} />
+    {!selectedFile && <div>
+      <div className="flex min-h-[310px] flex-col items-center justify-center gap-2.5 text-center">
+        <span className="mb-2 grid size-[58px] place-items-center rounded-full bg-[#e5f1ee] text-[#2c837a] dark:bg-[#333] dark:text-[#eee]"><CloudUpload size={28} /></span>
+        <strong className="text-base text-[#202827] dark:text-[#eee]">將文件拖放至此處</strong>
+        <Button type="button" variant="outline" onClick={() => fileInputRef.current?.click()}><CloudUpload size={17} />打開資料夾</Button>
+        <span className="mt-[22px] text-[11px] text-[#888] dark:text-[#999]">支援 PDF、PNG、JPG，單檔最大 10 MB</span>
+      </div>
+    </div>}
+    {selectedFile && <div className="mt-[42px] flex items-center gap-[13px] bg-white px-[18px] py-4 dark:bg-[#222]"><div className="grid size-[35px] place-items-center bg-[#e5f1ee] text-[#2c837a] dark:bg-[#333] dark:text-[#eee]"><FileText size={19} /></div><div><strong className="block text-[13px] text-[#222] dark:text-[#eee]">{selectedFile.name}</strong><span className="mt-[3px] block text-[11px] text-[#888] dark:text-[#999]">{formatSize(selectedFile.size)} · 已選擇</span></div><Button type="button" variant="ghost" size="icon" className="ml-auto" aria-label="重新選擇文件" title="重新選擇文件" onClick={onClearFile}><RefreshCw size={16} /></Button></div>}
+    {error && <Alert tone="warning">{error}</Alert>}
+    <div className="mt-4 flex items-center justify-end gap-[13px]"><Button type="button" disabled={!selectedFile} onClick={onStart}><Upload size={17} />開始解析</Button></div>
   </div>
 }
