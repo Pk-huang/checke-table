@@ -24,6 +24,9 @@ export async function uploadDocument(file: File): Promise<UploadedDocument> {
   }
 
   const documentResponse = await response.json() as UploadDocumentResponse
+  if (import.meta.env.DEV) {
+    console.log('[documents] upload response', documentResponse)
+  }
 
   return {
     documentId: documentResponse.document_id,

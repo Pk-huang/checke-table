@@ -106,7 +106,13 @@ export async function streamExtraction(documentId: string, options: StreamExtrac
 
   const decoder = new TextDecoder()
   const parser = createParser({
-    onEvent: (message) => options.onEvent(parseExtractionMessage(message)),
+    onEvent: (message) => {
+      const event = parseExtractionMessage(message)
+      if (import.meta.env.DEV) {
+        console.log('[extraction] SSE event', event)
+      }
+      options.onEvent(event)
+    },
   })
 
   for await (const chunk of response.body) {

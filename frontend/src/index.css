@@ -2,37 +2,3 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-:root {
-  --text: #52616b;
-  --text-h: #15262e;
-  --bg: #f3f5f3;
-  --border: #dbe3df;
-  --sans: 'Avenir Next', 'PingFang TC', sans-serif;
-  --heading: 'Avenir Next', 'PingFang TC', sans-serif;
-
-  font: 16px/145% var(--sans);
-  letter-spacing: 0;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-}
-
-#root { min-height: 100svh; }
-
-body {
-  margin: 0;
-}
-
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 650;
-  color: var(--text-h);
-}
-h1, h2, h3, p { margin: 0; }
-button, input, select { font: inherit; }
-button { cursor: pointer; }
