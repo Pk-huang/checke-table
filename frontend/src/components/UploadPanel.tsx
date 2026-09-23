@@ -25,11 +25,11 @@ export function UploadPanel({ selectedFiles, error, onFilesChange, onRemoveFile,
     <h2 className="mb-8 text-left text-[clamp(26px,3vw,36px)] font-semibold leading-[1.2] text-[#202827] dark:text-white">上傳文件</h2>
     <input ref={fileInputRef} className="hidden" type="file" multiple accept=".pdf,.png,.jpg,.jpeg" onChange={handleFileChange} />
     {!selectedFiles.length && <div>
-      <div className="flex min-h-[310px] flex-col items-center justify-center gap-2.5 border border-[#d6e0dc] bg-white text-center dark:border-[#3a524c] dark:bg-[#243631]">
-        <span className="mb-2 grid size-[58px] place-items-center rounded-full bg-[#e8f0f5] text-[#3c789c] dark:bg-[#2d4858] dark:text-[#b7d1df]"><CloudUpload size={28} /></span>
-        <strong className="text-base text-[#202827] dark:text-[#eee]">將文件拖放至此處</strong>
+      <div className="flex min-h-[310px] flex-col items-center justify-center gap-2.5 border border-[#d6e0dc] bg-white text-center dark:border-[#1a2731] dark:bg-[#090f15]">
+        <span className="mb-2 grid size-[58px] place-items-center rounded-full bg-[#e8f0f5] text-[#3c789c] dark:bg-[#0d1f2d] dark:text-[#b7d1df]"><CloudUpload size={28} /></span>
+        <strong className="text-base text-[#202827] dark:text-[#e7f0f4]">將文件拖放至此處</strong>
         <Button type="button" variant="outline" onClick={() => fileInputRef.current?.click()}><CloudUpload size={17} />打開資料夾</Button>
-        <span className="mt-[22px] text-[11px] text-[#888] dark:text-[#999]">支援 PDF、PNG、JPG，可一次加入多份文件</span>
+        <span className="mt-[22px] text-[11px] text-[#888] dark:text-[#a3b1b8]">支援 PDF、PNG、JPG，可一次加入多份文件</span>
       </div>
     </div>}
     {!!selectedFiles.length && <div className="mt-[42px] grid gap-2">

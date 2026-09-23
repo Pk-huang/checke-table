@@ -147,23 +147,23 @@ function App() {
         setView('upload')
     }
 
-    return <main className={`min-h-svh bg-[#f1f5f3] text-[#202827] dark:bg-[#101917] dark:text-[#d2dfdb] ${isDarkMode ? 'dark' : ''}`}>
-        <header className="flex h-[72px] items-center justify-between border-b border-[#d6e0dc] bg-white/92 px-[5vw] dark:border-[#31413e] dark:bg-[#172522]">
+    return <main className={`min-h-svh bg-[#f1f5f3] text-[#202827] dark:bg-[#050b12] dark:text-[#d0d9de] ${isDarkMode ? 'dark' : ''}`}>
+        <header className="flex h-[72px] items-center justify-between border-b border-[#d6e0dc] bg-white/92 px-[5vw] dark:border-[#1a2731] dark:bg-[#090f15]">
             <div className="flex items-center gap-2 text-[13px] font-extrabold tracking-[1.7px] text-[#202827] dark:text-white"><Sparkles size={17} /> CHECKTABLE</div>
             <div className="flex items-center gap-[18px]">
-                <div className="flex items-center gap-2 text-xs text-[#71807c] dark:text-[#aaa]"><span className="inline-block size-[7px] rounded-full bg-[#777] dark:bg-[#bbb]" />文件審核工作台</div>
-                <button type="button" className="grid size-[34px] place-items-center rounded-full border border-[#bdbdbd] bg-white text-[#333] transition-colors hover:border-[#111] hover:bg-[#111] hover:text-white dark:border-[#666] dark:bg-[#222] dark:text-[#ddd] dark:hover:border-white dark:hover:bg-white dark:hover:text-[#111]" aria-label={isDarkMode ? '切換至淺色模式' : '切換至深色模式'} title={isDarkMode ? '切換至淺色模式' : '切換至深色模式'} onClick={() => setIsDarkMode((currentMode) => !currentMode)}>{isDarkMode ? <Sun size={16} /> : <Moon size={16} />}</button>
+                <div className="flex items-center gap-2 text-xs text-[#71807c] dark:text-[#9aa8ae]"><span className="inline-block size-[7px] rounded-full bg-[#777] dark:bg-[#b4c0c6]" />文件審核工作台</div>
+                <button type="button" className="grid size-[34px] place-items-center rounded-full border border-[#bdbdbd] bg-white text-[#333] transition-colors hover:border-[#111] hover:bg-[#111] hover:text-white dark:border-[#243846] dark:bg-[#0d1820] dark:text-[#dfeaf0] dark:hover:border-[#7ebeea] dark:hover:bg-[#0d1f2d] dark:hover:text-[#dfeaf0]" aria-label={isDarkMode ? '切換至淺色模式' : '切換至深色模式'} title={isDarkMode ? '切換至淺色模式' : '切換至深色模式'} onClick={() => setIsDarkMode((currentMode) => !currentMode)}>{isDarkMode ? <Sun size={16} /> : <Moon size={16} />}</button>
             </div>
         </header>
         <div className="min-h-[calc(100svh-72px)]">
-            <section className="min-h-[calc(100svh-72px)] bg-[#f1f2f1] px-[clamp(30px,7vw,120px)] py-[58px] dark:bg-[#1b2926] max-[820px]:px-[22px] max-[820px]:py-[38px] max-[820px]:pb-[50px]">
-                <div className="mx-auto mb-10 flex w-full max-w-[1280px] items-start justify-center text-[12px] font-extrabold tracking-[1px] text-[#8a9692] dark:text-[#8fa7a0]" aria-label="目前處理進度">
+            <section className="min-h-[calc(100svh-72px)] bg-[#f1f2f1] px-[clamp(30px,7vw,120px)] py-[58px] dark:bg-[#050b12] max-[820px]:px-[22px] max-[820px]:py-[38px] max-[820px]:pb-[50px]">
+                <div className="mx-auto mb-10 flex w-full max-w-[1280px] items-start justify-center text-[12px] font-extrabold tracking-[1px] text-[#8a9692] dark:text-[#95a7af]" aria-label="目前處理進度">
                     {['開始上傳', '解析文件', '欄位審核', '完成送出'].map((label, index) => <div className="flex min-w-0 flex-1 flex-col items-center" key={label}>
-                        <span className={`mb-3 truncate ${index === currentStepIndex ? 'text-[#315f7b] dark:text-[#b7d1df]' : ''}`}>{label}</span>
+                        <span className={`mb-3 truncate ${index === currentStepIndex ? 'text-[#315f7b] dark:text-[#b6cfe1]' : ''}`}>{label}</span>
                         <div className="flex w-full items-center">
-                            <span className={`h-1 flex-1 ${index === 0 ? 'bg-transparent' : index <= currentStepIndex ? 'bg-[#3c789c] dark:bg-[#79a9c2]' : 'bg-[#d2d2d2] dark:bg-[#454545]'}`} />
-                            <span className={`relative z-10 grid size-10 shrink-0 place-items-center rounded-full border-2 text-sm ${index < currentStepIndex ? 'border-[#3c789c] bg-[#3c789c] text-white dark:border-[#79a9c2] dark:bg-[#79a9c2] dark:text-[#172522]' : index === currentStepIndex ? 'border-[#3c789c] bg-[#f1f2f1] text-[#3c789c] dark:border-[#79a9c2] dark:bg-[#1b2926] dark:text-[#b7d1df]' : 'border-[#c5c5c5] bg-[#c5c5c5] text-white dark:border-[#555] dark:bg-[#555]'}`}>{index < currentStepIndex ? <Check size={18} strokeWidth={2.5} /> : index + 1}</span>
-                            <span className={`h-1 flex-1 ${index === 3 ? 'bg-transparent' : index < currentStepIndex ? 'bg-[#3c789c] dark:bg-[#79a9c2]' : 'bg-[#d2d2d2] dark:bg-[#454545]'}`} />
+                            <span className={`h-1 flex-1 ${index === 0 ? 'bg-transparent' : index <= currentStepIndex ? 'bg-[#3c789c] dark:bg-[#5f8fb1]' : 'bg-[#d2d2d2] dark:bg-[#1c2b34]'}`} />
+                            <span className={`relative z-10 grid size-10 shrink-0 place-items-center rounded-full border-2 text-sm ${index < currentStepIndex ? 'border-[#3c789c] bg-[#3c789c] text-white dark:border-[#5f8fb1] dark:bg-[#5f8fb1] dark:text-[#050b12]' : index === currentStepIndex ? 'border-[#3c789c] bg-[#f1f2f1] text-[#3c789c] dark:border-[#5f8fb1] dark:bg-[#050b12] dark:text-[#b6cfe1]' : 'border-[#c5c5c5] bg-[#c5c5c5] text-white dark:border-[#1c2b34] dark:bg-[#1c2b34]'}`}>{index < currentStepIndex ? <Check size={18} strokeWidth={2.5} /> : index + 1}</span>
+                            <span className={`h-1 flex-1 ${index === 3 ? 'bg-transparent' : index < currentStepIndex ? 'bg-[#3c789c] dark:bg-[#5f8fb1]' : 'bg-[#d2d2d2] dark:bg-[#1c2b34]'}`} />
                         </div>
                     </div>)}
                 </div>
